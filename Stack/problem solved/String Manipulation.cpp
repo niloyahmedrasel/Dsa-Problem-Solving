@@ -1,4 +1,5 @@
-  public:
+//https://www.geeksforgeeks.org/problems/string-manipulation3706/1?page=1&difficulty%5B%5D=0&category%5B%5D=Stack&sortBy=submissions
+public:
     int removeConsecutiveSame(vector<string>& arr) {
         stack<string>temp;
         
