@@ -1,3 +1,4 @@
+//https://www.geeksforgeeks.org/problems/make-the-array-beautiful--170647/1
 class Solution {
   public:
     vector<int> makeBeautiful(vector<int> arr) {
