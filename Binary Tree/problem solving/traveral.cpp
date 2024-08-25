@@ -66,3 +66,34 @@ public:
         return result;
     }
 };
+
+//level order traversal
+//https://www.geeksforgeeks.org/problems/level-order-traversal/1?page=1&difficulty%5B%5D=0&category%5B%5D=Tree&sortBy=submissions
+class Solution
+{
+    public:
+    vector<int> levelOrder(Node* root)
+    {
+        queue<Node*>q;
+        vector<int>result;
+        
+        if(root == NULL){
+            return result;
+        }
+        q.push(root);
+        
+        while(!q.empty()){
+            Node *current = q.front();
+            result.push_back(current->data);
+            q.pop();
+            
+            if(current->left){
+                q.push(current->left);
+            }
+            if(current->right){
+                q.push(current->right);
+            }
+        }
+            return result;
+    }
+};
