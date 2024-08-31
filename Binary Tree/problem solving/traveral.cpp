@@ -29,6 +29,30 @@ public:
         return result;
     }
 };
+//pre order traversal itaretive approach
+class Solution{
+    public:
+    vector<int> preOrder(Node* root)
+    {
+        stack<Node*>s;
+        s.push(root);
+        vector<int>arr;
+        
+        while(!s.empty()){
+            
+            Node *temp = s.top();
+            s.pop();
+            arr.push_back(temp->data);
+            if(temp->right){
+                s.push(temp->right);
+            }
+            if(temp->left){
+                s.push(temp->left);
+            }
+        }
+            return arr;
+    }
+};
 //in order traversal
 //https://leetcode.com/problems/binary-tree-inorder-traversal/
 class Solution {
@@ -45,6 +69,46 @@ public:
         vector<int>result;
         helper(root,result);
         return result;
+    }
+};
+//inorder traversal iterative approach
+class Solution {
+public:
+    vector<int> inOrder(Node* root)
+    {
+        stack<Node*>s;
+        stack<bool>visited;
+        visited.push(0);
+        vector<int>arr;
+        
+        s.push(root);
+        
+        while(!s.empty()){
+            Node *temp = s.top();
+            s.pop();
+            bool flag = visited.top();
+            visited.pop();
+            
+            if(flag==0){
+                
+                if(temp->right){
+                    s.push(temp->right);
+                    visited.push(0);
+                }
+                if(temp){
+                    s.push(temp);
+                    visited.push(1);
+                }
+                if(temp->left){
+                    s.push(temp->left);
+                    visited.push(0);
+                }
+            }
+            else{
+                arr.push_back(temp->data);
+            }
+        }
+            return arr;
     }
 };
 
@@ -64,6 +128,39 @@ public:
         vector<int>result;
         helper(root,result);
         return result;
+    }
+};
+//post order traversal iterative approach
+class Solution{
+    public:
+    vector<int> postOrder(Node* node) {
+        
+        vector<int> arr;
+        if (node == nullptr) return arr;
+
+        stack<Node*> s1, s2;
+        s1.push(node);
+        
+        while (!s1.empty()) {
+            Node* curr = s1.top();
+            s1.pop();
+            s2.push(curr);
+            
+            if (curr->left) {
+                s1.push(curr->left);
+            }
+            if (curr->right) {
+                s1.push(curr->right);
+            }
+        }
+        
+        // Pop all elements from s2 and store in arr to get post-order
+        while (!s2.empty()) {
+            arr.push_back(s2.top()->data);
+            s2.pop();
+        }
+        
+        return arr;
     }
 };
 
